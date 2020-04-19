@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 from pprint import pprint
@@ -19,6 +20,7 @@ class Refineop(refine.RefineProject):
     # def project_url(self):
     #     # project_url
     #     return super().project_url()
+
     def do_json(self, command, data=None, include_engine=True):
         return super().do_json(command, data)
 
@@ -67,7 +69,7 @@ class Refineop(refine.RefineProject):
         # apply operations: apply the json file
         return super().apply_operations(file_path)
 
-    def export(self, export_format='tsv'):
+    def export(self, export_format='csv'):
         # export : return a fileobject of a project's data.
         return super().export(export_format)
 
@@ -185,12 +187,30 @@ class Refineop(refine.RefineProject):
     def get_operations(self):
         return super().get_operations()
 
+    def load_ops(self,name):
+        ops = self.get_operations()
+        with open(f'{name}.json', 'w') as fout:
+            json.dump(ops, fout, indent=4)
+
+    def load_data(self, filename):
+        with open(filename, 'wb')as f:
+            reader = self.export('csv')
+            for row in reader:
+                f.write(row)
+
 
 def main():
     server = refine.RefineServer()
-    oprefine = Refineop(server,2014260363969)
+    oprefine = Refineop(server,1596601650071)
+    proj_name = refine.Refine(server).get_project_name(1596601650071)
+    print(proj_name)
     # cells = oprefine.get_single_cell_value(4,1)
-    oprefine.flag_row(1)
+    # oprefine.single_edit(27, 5, 'text', 'KIMBA707')
+    # cur_op = oprefine.get_operations()
+    # pprint(cur_op)
+    # oprefine.flag_row(1)
+    # oprefine.load_ops('test')
+    oprefine.load_data('clean.csv')
 
 
 if __name__ == '__main__':

@@ -8,6 +8,7 @@ communicating with an `OpenRefine <http://openrefine.org/>`_ server.
 Currently, the following API is supported:
 
 - project creation/import, deletion, export
+- undo/redo
 - facet computation
 
   - text
@@ -33,7 +34,7 @@ Currently, the following API is supported:
   - reorder
   - remove
 
-- reconciliation
+- reconciliation support is useful but not complete
 
   - reconciliation judgment facet
   - guessing column type
@@ -69,8 +70,12 @@ Project Directory Layout
 +-------------------------+------------------------------------------------------------+
 | py-client-library.ipynb |  jupyter notebook demo                                     |
 +-------------------------+------------------------------------------------------------+
-
-
+| CoronaVirus_tweets.csv  | Source Dataset (Git-ignore)                                |
++-------------------------+------------------------------------------------------------+
+| load_recipe.json        | Load Operation History                                     |
++-------------------------+------------------------------------------------------------+
+| clean.csv               | Load clean dataset (Git-ignore)                            |
++-------------------------+------------------------------------------------------------+
 
 Contribute
 ============

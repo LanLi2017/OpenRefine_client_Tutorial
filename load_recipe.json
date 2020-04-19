@@ -1,0 +1,118 @@
+[
+    {
+        "op": "core/text-transform",
+        "description": "Text transform on cells in column Date (CST) using expression value.toDate()",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Date (CST)",
+        "expression": "value.toDate()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10
+    },
+    {
+        "op": "core/text-transform",
+        "description": "Text transform on cells in column Author using expression value.replace(\"@\",\" \")",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Author",
+        "expression": "value.replace(\"@\",\" \")",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10
+    },
+    {
+        "op": "core/text-transform",
+        "description": "Text transform on cells in column Author using expression value.trim()",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Author",
+        "expression": "value.trim()",
+        "onError": "keep-original",
+        "repeat": false,
+        "repeatCount": 10
+    },
+    {
+        "op": "core/text-transform",
+        "description": "Text transform on cells in column Author using expression value.toUppercase()",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Author",
+        "expression": "value.toUppercase()",
+        "onError": "set-to-blank",
+        "repeat": false,
+        "repeatCount": 10
+    },
+    {
+        "op": "core/mass-edit",
+        "description": "Mass edit cells in column Country",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Country",
+        "expression": "value",
+        "edits": [
+            {
+                "fromBlank": false,
+                "fromError": false,
+                "from": [
+                    "US",
+                    "US "
+                ],
+                "to": "US"
+            }
+        ]
+    },
+    {
+        "description": "Edit single cell on row 28, column Name"
+    },
+    {
+        "op": "core/column-addition",
+        "description": "Create column Country_State at index 8 based on column Country using expression cells.Country.value+cells.State.value",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "newColumnName": "Country_State",
+        "columnInsertIndex": 8,
+        "baseColumnName": "Country",
+        "expression": "cells.Country.value+cells.State.value",
+        "onError": "set-to-blank"
+    },
+    {
+        "op": "core/column-split",
+        "description": "Split column Name by separator",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "Name",
+        "guessCellType": true,
+        "removeOriginalColumn": true,
+        "mode": "separator",
+        "separator": " ",
+        "regex": false,
+        "maxColumns": 0
+    },
+    {
+        "op": "core/column-rename",
+        "description": "Rename column Name 1 to FirstName",
+        "oldColumnName": "Name 1",
+        "newColumnName": "FirstName"
+    },
+    {
+        "description": "Flag row 2"
+    },
+    {
+        "description": "Star row 3"
+    }
+]
