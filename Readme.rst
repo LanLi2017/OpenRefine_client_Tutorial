@@ -50,44 +50,12 @@ enable overriding the host & port.
 In order to run all tests, a live Refine server is needed. No existing projects
 are affected.
 
-Installation
-============
 
-(Someone with more familiarity with python's byzantine collection of installation
-frameworks is very welcome to improve/"best practice" all this.)
+Version Control
+===============
+python 3.0+
+OpenRefine 3.1
 
-#. Install dependencies, which currently is ``urllib2_file``:
-
-   ``sudo pip install -r requirements.txt``
-
-   (If you don't have ``pip`` visit `pip-installer.org <http://www.pip-installer.org/en/latest/installing.html#install-or-upgrade-pip>`_)
-
-#. Ensure you have a Refine server running somewhere and, if necessary, set
-   the environment vars as above.
-
-#. Run tests, build, and install:
-
-   ``python setup.py test # to do a subset, e.g., --test-suite tests.test_facet``
-
-   ``python setup.py build``
-
-   ``python setup.py install``
-
-There is a Makefile that will do this too, and more.
-
-TODO
-====
-
-The API so far has been filled out from building a test suite to carry out the
-actions in `David Huynh's Refine tutorial <http://davidhuynh.net/spaces/nicar2011/tutorial.pdf>`_ which while certainly showing off a
-wide range of Refine features doesn't cover the entire suite. Notable exceptions
-currently include:
-
-- reconciliation support is useful but not complete
-- undo/redo
-- Freebase
-- join columns
-- columns from URL
 
 Contribute
 ============
@@ -126,4 +94,12 @@ Some data used in the test suite has been used from publicly available sources,
 - us_economic_assistance.csv: `"The Green Book" <http://www.data.gov/raw/1554>`_
 
 - eli-lilly.csv: `ProPublica's "Docs for Dollars" <http://projects.propublica.org/docdollars/>`_ leading to a `Lilly Faculty PDF <http://www.lillyfacultyregistry.com/documents/EliLillyFacultyRegistryQ22010.pdf>`_ processed by `David Huynh's ScraperWiki script <http://scraperwiki.com/scrapers/eli-lilly-dollars-for-docs-scraper/edit/>`_
+
+
+Directory               | Description
+------------------------|-----------
+OpenRefineClientpy3     | Source code
+OR.py                   | Resource file Encapsulates functions of OpenRefineClientpy3
+Ori.json                | Source Operation History
+py-client-library.ipynb | jupyter notebook demo
 
