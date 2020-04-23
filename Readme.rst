@@ -78,7 +78,9 @@ Project Directory Layout
 +-------------------------+------------------------------------------------------------+
 
 Project Workflow:
+
 .. image:: OR-client-lib.png
+   :align: center
 
 
 
