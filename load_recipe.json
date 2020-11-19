@@ -1,113 +1,121 @@
 [
     {
-        "op": "core/text-transform",
-        "description": "Text transform on cells in column Date (CST) using expression value.toDate()",
-        "engineConfig": {
-            "facets": [],
-            "mode": "row-based"
-        },
-        "columnName": "Date (CST)",
-        "expression": "value.toDate()",
-        "onError": "keep-original",
-        "repeat": false,
-        "repeatCount": 10
-    },
-    {
-        "op": "core/text-transform",
-        "description": "Text transform on cells in column Author using expression value.replace(\"@\",\" \")",
-        "engineConfig": {
-            "facets": [],
-            "mode": "row-based"
-        },
-        "columnName": "Author",
-        "expression": "value.replace(\"@\",\" \")",
-        "onError": "keep-original",
-        "repeat": false,
-        "repeatCount": 10
-    },
-    {
-        "op": "core/text-transform",
-        "description": "Text transform on cells in column Author using expression value.trim()",
-        "engineConfig": {
-            "facets": [],
-            "mode": "row-based"
-        },
-        "columnName": "Author",
-        "expression": "value.trim()",
-        "onError": "keep-original",
-        "repeat": false,
-        "repeatCount": 10
-    },
-    {
-        "op": "core/text-transform",
-        "description": "Text transform on cells in column Author using expression value.toUppercase()",
-        "engineConfig": {
-            "facets": [],
-            "mode": "row-based"
-        },
-        "columnName": "Author",
-        "expression": "value.toUppercase()",
-        "onError": "set-to-blank",
-        "repeat": false,
-        "repeatCount": 10
-    },
-    {
         "op": "core/mass-edit",
-        "description": "Mass edit cells in column Country",
         "engineConfig": {
             "facets": [],
             "mode": "row-based"
         },
-        "columnName": "Country",
+        "columnName": "scientificName",
         "expression": "value",
         "edits": [
             {
+                "from": [
+                    "Amphispiza bilineata",
+                    "Amphespiza bilineata",
+                    "Emphispiza bilinata",
+                    "Amphispiza bilineatus",
+                    "Amphispizo bilineata"
+                ],
                 "fromBlank": false,
                 "fromError": false,
+                "to": "Amphispiza bilineata"
+            },
+            {
                 "from": [
-                    "US",
-                    "US "
+                    "Ammospermophilus harrisi",
+                    "Ammospermophilis harrisi",
+                    "Ammospermophilus harrisii"
                 ],
-                "to": "US"
+                "fromBlank": false,
+                "fromError": false,
+                "to": "Ammospermophilus harrisi"
             }
-        ]
+        ],
+        "description": "Mass edit cells in column scientificName"
     },
     {
-        "description": "Edit single cell on row 28, column Name"
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "country",
+        "expression": "value.toUppercase()",
+        "onError": "set-to-blank",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column country using expression value.toUppercase()"
+    },
+    {
+        "op": "core/text-transform",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "country",
+        "expression": "value.toUppercase()",
+        "onError": "set-to-blank",
+        "repeat": false,
+        "repeatCount": 10,
+        "description": "Text transform on cells in column country using expression value.toUppercase()"
+    },
+    {
+        "description": "Edit single cell on row 9, column country"
+    },
+    {
+        "op": "core/mass-edit",
+        "engineConfig": {
+            "facets": [],
+            "mode": "row-based"
+        },
+        "columnName": "scientificName",
+        "expression": "value",
+        "edits": [
+            {
+                "from": [
+                    "Amphispiza bilineata",
+                    "Amphispiza cilineata"
+                ],
+                "fromBlank": false,
+                "fromError": false,
+                "to": "Amphispiza bilineata"
+            }
+        ],
+        "description": "Mass edit cells in column scientificName"
     },
     {
         "op": "core/column-addition",
-        "description": "Create column Country_State at index 8 based on column Country using expression cells.Country.value+cells.State.value",
         "engineConfig": {
             "facets": [],
             "mode": "row-based"
         },
-        "newColumnName": "Country_State",
-        "columnInsertIndex": 8,
-        "baseColumnName": "Country",
-        "expression": "cells.Country.value+cells.State.value",
-        "onError": "set-to-blank"
+        "baseColumnName": "mo",
+        "expression": "cells.mo.value+\"/\"+cells.dy.value",
+        "onError": "set-to-blank",
+        "newColumnName": "mm/dd",
+        "columnInsertIndex": 3,
+        "description": "Create column mm/dd at index 3 based on column mo using expression cells.mo.value+\"/\"+cells.dy.value"
     },
     {
         "op": "core/column-split",
-        "description": "Split column Name by separator",
         "engineConfig": {
             "facets": [],
             "mode": "row-based"
         },
-        "columnName": "Name",
+        "columnName": "scientificName",
         "guessCellType": true,
         "removeOriginalColumn": true,
         "mode": "separator",
         "separator": " ",
         "regex": false,
-        "maxColumns": 0
+        "maxColumns": 0,
+        "description": "Split column scientificName by separator"
     },
     {
         "op": "core/column-rename",
-        "description": "Rename column Name 1 to FirstName",
-        "oldColumnName": "Name 1",
-        "newColumnName": "FirstName"
+        "oldColumnName": "scientificName 1",
+        "newColumnName": "scientific_Name_1",
+        "description": "Rename column scientificName 1 to scientific_Name_1"
     },
     {
         "description": "Flag row 2"

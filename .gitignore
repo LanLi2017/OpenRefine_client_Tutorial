@@ -1,0 +1,7 @@
+.ipynb_checkpoints
+.idea
+CoronaVirus_tweets.csv
+CleanedData.csv
+**/__pycache__/
+**/*.py[cod]
+.DS_store
